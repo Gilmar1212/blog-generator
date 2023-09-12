@@ -26,3 +26,6 @@ Route::post("/cadastro-usuario", [\App\Http\Controllers\cadastroUsuarioControlle
 
 Route::get("/cadastro-anotacoes",[\App\Http\Controllers\cadastroAnotacoes::class,"cadastroAnotacoes"])->name("cadastro.anotacoes");
 Route::post("/cadastro-anotacoes",[\App\Http\Controllers\cadastroAnotacoes::class,"store"]);
+
+Route::get("/cadastro-materia",[\App\Http\Controllers\cadastroMateriaController::class,"cadastroMateria"])->name("cadastro.materia");
+Route::post("/cadastro-materia",[\App\Http\Controllers\cadastroMateriaController::class,"store"]);

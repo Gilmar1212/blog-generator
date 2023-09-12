@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_anotacoes', function (Blueprint $table) {
-            $table->id("id_anotacoes")->primary();
-            $table->string("materia");
-            $table->string("anotacoes");
-            $table->string("assunto_anotacoes");
-            $table->integer("id_materia");
-        });
+        if(!Schema::hasTable("tbl_anotacoes")){
+            Schema::create('tbl_anotacoes', function (Blueprint $table) {
+                $table->id("id_anotacoes")->primary();
+                $table->string("materia");
+                $table->string("anotacoes");
+                $table->string("assunto_anotacoes");
+                $table->integer("id_materia");
+            });
+        }        
     }
 
     /**
