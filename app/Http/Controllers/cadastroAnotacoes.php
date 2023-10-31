@@ -9,7 +9,7 @@ use App\Models\Users;
 class cadastroAnotacoes extends Controller
 {
     public function cadastroAnotacoes(){
-        return redirect("/logar/login");
+        return view("cadastro.cadastroAnotacoes");
     }
     public function store(Request $request){
         $data =  $request->session()->all();

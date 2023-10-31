@@ -22,7 +22,7 @@ class cadastroUsuarioController extends Controller
         $cadastro->password  = password_hash($request->password,PASSWORD_BCRYPT);
         $cadastro->email  = $request->email;
         $cadastro->save();
-
+        
         return redirect("/");
     }
 }
