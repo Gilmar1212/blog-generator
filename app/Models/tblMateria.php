@@ -9,6 +9,6 @@ class tblMateria extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    
+    protected $table = "tbl_materia";
 }
 

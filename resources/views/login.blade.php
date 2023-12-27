@@ -20,9 +20,10 @@
             @if ($data == $content['id_materia'])
                 <div class="materia-container">
                     <div class="materia-container__content">
-                        <a href="{{route("alteracao.anotacoes")}}">
+                        <h2>Materia: {{ $content['materia'] }}</h2>
+                        {{-- <a href="{{route("alteracao.anotacoes")}}">
                             <h2>Materia: {{ $content['materia'] }}</h2>
-                        </a>                                   
+                        </a>                                    --}}
                     </div>
                 </div>
             @endif

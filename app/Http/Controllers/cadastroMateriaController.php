@@ -9,7 +9,7 @@ use App\Models\tblMateria;
 class cadastroMateriaController extends Controller
 {
     public function cadastroMateria(){
-    //    return redirect("logar/login");
+      //  return redirect("logar/login");
     }
     public function store(Request $request){
       $cadastro = new tblMateria;
@@ -17,5 +17,6 @@ class cadastroMateriaController extends Controller
       $cadastro->materia = $request->materia;
       $cadastro->save();
       return redirect("/logar/login");
+      dd($cadastro);
     }
 }

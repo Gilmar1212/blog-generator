@@ -9,4 +9,5 @@ class TblAnotacoes extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = "tbl_anotacoes";
 }
