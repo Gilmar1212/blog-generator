@@ -29,5 +29,5 @@ Route::post("/cadastro-anotacoes",[\App\Http\Controllers\cadastroAnotacoes::clas
 
 Route::get("/cadastro-materia",[\App\Http\Controllers\cadastroMateriaController::class,"cadastroMateria"])->name("cadastro.materia");
 Route::post("/cadastro-materia",[\App\Http\Controllers\cadastroMateriaController::class,"store"]);
-Route::get("/deleta-anotacoes",[\App\Http\Controllers\deleteAnotacoes::class,"destroy"])->name("delete.deleteAnotacoes");
+Route::get("/deleta-anotacoes",[\App\Http\Controllers\deleteAnotacoes::class,"deleteAnotacoes"])->name("delete.deleteAnotacoes");
 Route::delete("/deleta-anotacoes",[\App\Http\Controllers\deleteAnotacoes::class,"destroy"]);
