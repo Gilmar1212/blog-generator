@@ -15,7 +15,7 @@ return new class extends Migration
             Schema::create('tbl_anotacoes', function (Blueprint $table) {
                 $table->id("id_anotacoes")->primary();
                 $table->string("materia");
-                $table->string("anotacoes");
+                $table->string("titulo_anotacoes");
                 $table->string("assunto_anotacoes");
                 $table->integer("id_materia");
             });

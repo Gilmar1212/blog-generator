@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        
+        if(!Schema::hasTable("tbl_materia")){
         Schema::create("tbl_materia",function (Blueprint $table){
             $table->id("id_materia")->primary();
             $table->string("materia");
+            $table->integer("id_user");
         });
 
-        
+    }
     }
 
     /**

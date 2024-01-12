@@ -16,11 +16,15 @@ class cadastroUsuarioController extends Controller
     return view("cadastro.cadastrarUsuario");
     }
     public function store(Request $request){
-        
+        $tolken_hash = bin2hex(random_bytes(320));
+        $tolken_generated = hash("sha256",$tolken_hash);        
+
         $cadastro = new Users;
         $cadastro->name = $request->name;
         $cadastro->password  = password_hash($request->password,PASSWORD_BCRYPT);
         $cadastro->email  = $request->email;
+        $cadastro->remember_token = $tolken_generated;
+        
         $cadastro->save();
         
         return redirect("/");

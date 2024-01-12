@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TblAnotacoes;
+use App\Models\tblMateria;
+use App\Models\tblAnotacoes;
 class IndexController extends Controller
 {
     public function index(){
-        $anotacoes = TblAnotacoes::all();
-        return view("index", ['anotacoes'=>$anotacoes]);
+        $materia = tblMateria::all();        
+        return view("index", ['materia'=>$materia]);
     }
 }

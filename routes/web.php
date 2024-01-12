@@ -18,8 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get("/", [\App\Http\Controllers\indexController::class,"index"])->name("index");
 Route::prefix("/logar")->group(function(){
-    Route::get("/login", [\App\Http\Controllers\loginController::class,"login"])->name("logar.login");
-    Route::post("/login", [\App\Http\Controllers\loginController::class,"verify"]);
+    Route::post("/login", [\App\Http\Controllers\loginController::class,"login"])->name("logar.login");    
 });
 Route::get("/cadastro-usuario", [\App\Http\Controllers\cadastroUsuarioController::class,"cadastro"])->name("cadastro.cadastrar");
 Route::post("/cadastro-usuario", [\App\Http\Controllers\cadastroUsuarioController::class,"store"]);

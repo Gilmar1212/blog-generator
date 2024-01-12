@@ -15,8 +15,8 @@ class cadastroAnotacoes extends Controller
         $data =  $request->session()->all();
         $tbl_anotacoes = new TblAnotacoes;
         $tbl_anotacoes->materia = $request->anotacao;
-        $tbl_anotacoes->anotacoes = $request->anotacao;
-        $tbl_anotacoes->assunto_anotacoes = $request->titulo;
+        $tbl_anotacoes->titulo_anotacoes = $request->titulo;
+        $tbl_anotacoes->assunto_anotacoes = $request->anotacao;
         $tbl_anotacoes->id_materia = $data["userSession"]["id"];
         $tbl_anotacoes->save();
         return redirect("/logar/login");
