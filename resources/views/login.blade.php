@@ -11,18 +11,24 @@
 <body>
     @isset($user)
         bem vindo: {{ $user }}
-    @endisset
-    <a href="{{route("cadastro.anotacoes")}}" title="Cadastre sua matéria">
-        Cadastre aqui sua anotação
-    </a>
+    @endisset   
     @isset($materia)    
         @foreach ($materia as $content)
             @if ($data == $content['id_user'])
                 <div class="materia-container">
                     <div class="materia-container__content">
-                        <h2>Materia: {{ $content['materia'] }}</h2>                        
+                        <a href="{{route("cadastro.anotacoes",["id_materia"=>$content["id_materia"]])}}" title="{{ $content['materia'] }}">
+                            <h2>Materia: {{ $content['materia'] }}</h2>   
+                        </a>
+                            @isset($anotacoes)
+                            @foreach($anotacoes as $anotacao_key)
+                                @if($content["id_materia"] == $anotacao_key["id_materia"])
+                                Anotação: {{$anotacao_key["titulo_anotacoes"]}}<br>
+                                @endif
+                            @endforeach
+                            @endisset                     
                         <a href="{{route("delete.deleteAnotacoes")}}">       
-                            Delete a sua postagem                     
+                            Delete a sua materia                     
                         </a>
                     </div>
                 </div>

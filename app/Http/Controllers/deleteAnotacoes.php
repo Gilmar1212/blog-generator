@@ -13,7 +13,7 @@ class deleteAnotacoes extends Controller
     public function deleteAnotacoes()
     {
         $materia = tblMateria::all();               
-        $anotacoes = tblAnotacoes::all();
+        $anotacoes = tblAnotacoes::all();        
         return view("delete.deleteAnotacoes", ["materia"=>$materia],["anotacoes"=>$anotacoes]);
     }
     public function destroy(Request $request)

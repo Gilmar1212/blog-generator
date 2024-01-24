@@ -15,8 +15,14 @@
     <form action="{{route("cadastro.anotacoes")}}" method="post">        
         @csrf
         <input type="text" name="titulo" placeholder="Titulo"><br><br>
+        <input type="hidden" name="id_materia" value="{{request("id_materia")}}"><br><br>
         <textarea type="text" name="anotacao" cols="30" rows="10" placeholder="Anotação"></textarea><br>
         <input type="submit" value="Enviar">
-    </form> 
+    </form>     
+    {{-- @isset($anotacoes)
+    @foreach($anotacoes as $key)
+        {{$key}}
+    @endforeach
+    @endisset --}}
 </body>
 </html>
