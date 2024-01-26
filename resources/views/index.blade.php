@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="{{route("logar.login")}}" method="post">
+    <form action="{{route("login.user-area")}}" method="post">
         @csrf
         <input type="email" name="email" placeholder="Login" required>
         <input type="password" name="password" placeholder="Senha" required>

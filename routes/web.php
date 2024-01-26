@@ -18,9 +18,9 @@ use App\Http\Controllers\cadastroAnotacoes;
 //     return view('welcome');
 // });
 Route::get("/", [\App\Http\Controllers\indexController::class,"index"])->name("index");
-Route::prefix("/logar")->group(function(){
-    Route::get("/login", [\App\Http\Controllers\loginController::class,"login"])->name("logar.login");    
-    Route::post("/login", [\App\Http\Controllers\loginController::class,"autenticaLogin"])->name("logar.login");    
+Route::prefix("/login")->group(function(){
+    Route::get("/user-area", [\App\Http\Controllers\loginController::class,"login"])->name("login.user-area");    
+    Route::post("/user-area", [\App\Http\Controllers\loginController::class,"autenticaLogin"])->name("login.user-area");    
 });
 Route::get("/cadastro-usuario", [\App\Http\Controllers\cadastroUsuarioController::class,"cadastro"])->name("cadastro.cadastrar");
 Route::post("/cadastro-usuario", [\App\Http\Controllers\cadastroUsuarioController::class,"store"]);

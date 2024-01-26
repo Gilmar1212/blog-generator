@@ -16,7 +16,7 @@ class loginController extends Controller
     private $user_consult;
     
     public function login(Request $request){        
-        return view("logar.login");
+        return view("user-area");
     }
     protected function autenticaLogin(Request $request)
     {
@@ -31,7 +31,7 @@ class loginController extends Controller
             
             $request_content = $this->request->session()->all();
             
-            return view("login", ["user" => $request_content["userSession"]["user"], "data" => $request_content["userSession"]["id_user"], "materia" => $materia_table],["anotacoes"=> $anotacoes_table]);
+            return view("user-area", ["user" => $request_content["userSession"]["user"], "data" => $request_content["userSession"]["id_user"], "materia" => $materia_table],["anotacoes"=> $anotacoes_table]);
         }
         if ($this->user_consult->email == null) {
             echo '<script>alert("Nome de usuário ou senha não existem"); window.location.href = "/"</script>';

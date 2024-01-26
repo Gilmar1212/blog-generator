@@ -24,5 +24,6 @@ class cadastroAnotacoes extends Controller
         $tbl_anotacoes->assunto_anotacoes = $request->anotacao;
         $tbl_anotacoes->id_materia = $request->id_materia;
         $tbl_anotacoes->save();
+        return redirect()->route("login.user-area");
     }
 }

@@ -27,7 +27,7 @@
                                 @endif
                             @endforeach
                             @endisset                     
-                        <a href="{{route("delete.deleteAnotacoes")}}">       
+                        <a href="{{route("delete.deleteAnotacoes",["id_materia"=>$content["id_materia"]])}}">       
                             Delete a sua materia                     
                         </a>
                     </div>
