@@ -10,7 +10,7 @@
     <form method="POST" action="{{route("cadastro.cadastrar")}}">
         @csrf
         <input type="text" name="name" placeholder="Seu nome" required>
-        <input type="text" name="email" placeholder="Insira seu usuário ou email" required>
+        <input type="email" name="email" placeholder="Insira seu usuário ou email" required>
         <input type="password" name="password" placeholder="insira sua senha" required>
         <input type="submit" value="Cadastrar">
         {{-- {{$cadastro}} --}}

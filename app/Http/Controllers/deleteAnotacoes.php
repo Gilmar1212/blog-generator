@@ -7,26 +7,29 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Users;
 use App\Models\tblMateria;
 use App\Models\tblAnotacoes;
+use Exception;
 
 class deleteAnotacoes extends Controller
 {
     public function deleteAnotacoes(Request $request)
     {
         $id_materia_get = $request->query("id_materia");
-        $materia = tblMateria::all();               
-        $anotacoes = tblAnotacoes::all();        
-        return view("delete.deleteAnotacoes",["materia"=>$materia],["anotacoes"=>$anotacoes],["id_materia_get"=>$id_materia_get]);
+        $materia = tblMateria::all();
+        $anotacoes = tblAnotacoes::all();
+        return view("delete.deleteAnotacoes", ["materia" => $materia], ["anotacoes" => $anotacoes], ["id_materia_get" => $id_materia_get]);
     }
     public function destroy(Request $request)
-    {        
-        $anotacoes = tblAnotacoes::all();    
-        foreach($anotacoes as $index => $info){
-            if($request->id_anotacoes == $info["id_anotacoes"]){                                
-                DB::table("tbl_anotacoes")->where("id_anotacoes",$request->id_anotacoes)->delete();            
+    {
+        try {
+            $rowsDeleted = DB::table("tbl_anotacoes")->where("id_anotacoes", $request->id_anotacoes)->delete();
+    
+            if ($rowsDeleted > 0) {
+                return redirect()->route('delete.deleteAnotacoes')->with('success', 'Registro apagado com sucesso!');
+            } else {
+                return "Nenhum registro foi excluído.";
             }
-            
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->with("error", 'Erro ao excluir registros: ' . $e->getMessage());
         }
-        
-        
     }
 }

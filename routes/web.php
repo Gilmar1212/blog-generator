@@ -14,21 +14,24 @@ use App\Http\Controllers\cadastroAnotacoes;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::get("/", [\App\Http\Controllers\indexController::class,"index"])->name("index");
-Route::prefix("/login")->group(function(){
-    Route::get("/user-area", [\App\Http\Controllers\loginController::class,"login"])->name("login.user-area");    
-    Route::post("/user-area", [\App\Http\Controllers\loginController::class,"autenticaLogin"])->name("login.user-area");    
+Route::prefix("/")->group(function () {
+    Route::get("/", [\App\Http\Controllers\loginController::class, "login"])->name("index");    
 });
-Route::get("/cadastro-usuario", [\App\Http\Controllers\cadastroUsuarioController::class,"cadastro"])->name("cadastro.cadastrar");
-Route::post("/cadastro-usuario", [\App\Http\Controllers\cadastroUsuarioController::class,"store"]);
+Route::post("/auth",[\App\Http\Controllers\loginController::class, "autenticaLogin"])->name("auth");
+// Route::get("/api-dados", [\App\Http\Controllers\apiDadosBasicos::class, "index"]);
+// Route::get("/testa-api", [\App\Http\Controllers\testaApi::class, "consomeAPI"])
+//     ->name("login.consome-api")
+//     ->middleware(\App\Http\Middleware\CorsMiddleware::class);
 
-Route::get("/cadastro-anotacoes",[\App\Http\Controllers\cadastroAnotacoes::class,"cadastroAnotacoes"])->name("cadastro.anotacoes");
-Route::post("/cadastro-anotacoes",[\App\Http\Controllers\cadastroAnotacoes::class,"store"]);
-
-Route::get("/cadastro-materia",[\App\Http\Controllers\cadastroMateriaController::class,"cadastroMateria"])->name("cadastro.materia");
-Route::post("/cadastro-materia",[\App\Http\Controllers\cadastroMateriaController::class,"store"]);
-Route::get("/deleta-anotacoes",[\App\Http\Controllers\deleteAnotacoes::class,"deleteAnotacoes"])->name("delete.deleteAnotacoes");
-Route::delete("/deleta-anotacoes",[\App\Http\Controllers\deleteAnotacoes::class,"destroy"]);
+Route::get("/cadastro-usuario", [\App\Http\Controllers\cadastroUsuarioController::class, "cadastro"])->name("cadastro.cadastrar");
+Route::post("/cadastro-usuario", [\App\Http\Controllers\cadastroUsuarioController::class, "store"]);
+Route::prefix("/cadastro")->group(function () {
+    Route::get("/cadastro-anotacoes/{id}", [\App\Http\Controllers\cadastroAnotacoes::class, "mostraAnotacoes"])->name("cadastro.anotacoes");
+    Route::get("/cadastro-anotacoes", [\App\Http\Controllers\cadastroAnotacoes::class, "store"])->name("cadastro.store");
+});
+Route::get("/cadastro-materia", [\App\Http\Controllers\cadastroMateriaController::class, "cadastroMateria"])->name("cadastro.materia");
+Route::post("/cadastro-materia", [\App\Http\Controllers\cadastroMateriaController::class, "store"]);
+Route::prefix("/delete")->group(function () {
+    Route::get("/deleta-anotacoes", [\App\Http\Controllers\deleteAnotacoes::class, "deleteAnotacoes"])->name("delete.deleteAnotacoes");
+    Route::delete("/deleta-anotacoes", [\App\Http\Controllers\deleteAnotacoes::class, "destroy"]);
+});

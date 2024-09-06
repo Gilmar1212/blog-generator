@@ -9,13 +9,24 @@
 </head>
 
 <body>
-    <form action="{{route("login.user-area")}}" method="post">
+    <h1>Create Post</h1>
+  
+    <form action="{{ route('auth') }}" method="POST">
         @csrf
-        <input type="email" name="email" placeholder="Login" required>
-        <input type="password" name="password" placeholder="Senha" required>
+        <input type="email" name="email" placeholder="Login">
+        <input type="password" name="password" placeholder="Senha">
         <input type="submit">
-        <a href="{{route("cadastro.cadastrar")}}" title="Cadastre-se">Cadastre-se</a>        
+        <a href="{{ route('cadastro.cadastrar') }}" title="Cadastre-se">Cadastre-se</a>
     </form>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 </body>
 
 </html>
